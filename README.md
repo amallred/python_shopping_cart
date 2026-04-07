@@ -42,4 +42,7 @@ Once you've tried building it, take a moment to reflect:
 - What are some next steps you could take to build this out further?
 
 #### AI Disclaimer
-I did use Chat GPT to help in figuring out how to implement the `__str__` functionality and checking the inventory dictionary after much searching online.
+After much searching online I did use Chat GPT to help in figuring out:
+- How to implement the `__str__` functionality
+- Checking the inventory as a dictionary
+- The get total loop when working with the inventory dictionary and the `items()` method
