@@ -10,16 +10,23 @@ class ShoppingCart:
         self.items = {}  # {product: quantity}
 
     def add_product(self, product, quantity):
-        pass
         # push product and quantity to self.items
+        if product.name in self.items:
+            self.items[product.name] += quantity
+        else:
+            self.items[product.name] = quantity
+        print(f"{quantity} {product.name} product(s) added to the cart.")
 
     def remove_product(self, product, quantity):
-        pass
-        # pop/remove product(s) from self.items
+        # remove product(s) from self.items
+        if product in self.items:
+            self.items[product.name] -= quantity
+        else:
+            print(f"{product.name} is not in your cart.")
 
     def view_cart(self):
-        pass
         # view self.items
+        print(f"{self.items}")
 
     def get_total(self):
         pass
@@ -30,3 +37,24 @@ class ShoppingCart:
         pass
         # update Product's stock
         # clear self.items
+
+
+# ---------
+
+bread = Product("bread", 2.99, 20)
+cheese = Product("cheese", 5.25, 10)
+eggs = Product("eggs", 1.99, 30)
+milk = Product("milk", 1.29, 20)
+banana = Product("banana", 0.25, 60)
+
+# ---------
+cart = ShoppingCart()
+# cart: dict(ShoppingCart) = {
+#     pass
+# }
+
+cart.add_product(bread, 1)
+cart.add_product(eggs, 1)
+cart.add_product(cheese, 2)
+cart.add_product(bread, 1)
+cart.view_cart()
