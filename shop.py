@@ -19,8 +19,9 @@ class ShoppingCart:
 
     def remove_product(self, product, quantity):
         # remove product(s) from self.items
-        if product in self.items:
+        if product.name in self.items:
             self.items[product.name] -= quantity
+            print(f"{quantity} {product.name} product(s) removed from the cart.")
         else:
             print(f"{product.name} is not in your cart.")
 
@@ -39,6 +40,10 @@ class ShoppingCart:
         # clear self.items
 
 
+CART = ShoppingCart()
+
+# ---------
+# INVENTORY
 # ---------
 
 bread = Product("bread", 2.99, 20)
@@ -47,14 +52,10 @@ eggs = Product("eggs", 1.99, 30)
 milk = Product("milk", 1.29, 20)
 banana = Product("banana", 0.25, 60)
 
-# ---------
-cart = ShoppingCart()
-# cart: dict(ShoppingCart) = {
-#     pass
-# }
-
-cart.add_product(bread, 1)
-cart.add_product(eggs, 1)
-cart.add_product(cheese, 2)
-cart.add_product(bread, 1)
-cart.view_cart()
+CART.add_product(bread, 1)
+CART.add_product(bread, 1)
+CART.add_product(eggs, 1)
+CART.add_product(cheese, 2)
+CART.view_cart()
+CART.remove_product(bread, 1)
+CART.view_cart()
