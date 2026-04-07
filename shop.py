@@ -4,6 +4,9 @@ class Product:
         self.price = price
         self.stock = stock
 
+    def __str__(self):
+        return f"{self.name}, {self.price}, {self.stock}"
+
 
 class ShoppingCart:
     def __init__(self):
@@ -11,28 +14,37 @@ class ShoppingCart:
 
     def add_product(self, product, quantity):
         # push product and quantity to self.items
-        if product.name in self.items:
-            self.items[product.name] += quantity
+        if product in inventory:
+            if product in self.items:
+                self.items[product] += quantity
+            else:
+                self.items[product] = quantity
+            print(f"{quantity} {product} product(s) added to the cart.")
         else:
-            self.items[product.name] = quantity
-        print(f"{quantity} {product.name} product(s) added to the cart.")
+            print(f"{product} is not in the store's inventory")
 
     def remove_product(self, product, quantity):
         # remove product(s) from self.items
-        if product.name in self.items:
-            self.items[product.name] -= quantity
-            print(f"{quantity} {product.name} product(s) removed from the cart.")
+        if product in self.items:
+            self.items[product] -= quantity
+            print(f"{quantity} {product} product(s) removed from the cart.")
         else:
-            print(f"{product.name} is not in your cart.")
+            print(f"{product} is not in your cart.")
 
     def view_cart(self):
         # view self.items
         print(f"{self.items}")
 
     def get_total(self):
-        pass
         # sum prices of all self.items
         # Reference the Product's object for price
+        total = 0
+        print(self.items)
+        for item in self.items:
+            # price = item[1]
+            # total += price
+            print(item)
+        print(f"{total}")
 
     def checkout(self):
         pass
@@ -43,19 +55,31 @@ class ShoppingCart:
 CART = ShoppingCart()
 
 # ---------
-# INVENTORY
+# INVENTORY OBJECTS
 # ---------
 
-bread = Product("bread", 2.99, 20)
-cheese = Product("cheese", 5.25, 10)
-eggs = Product("eggs", 1.99, 30)
-milk = Product("milk", 1.29, 20)
-banana = Product("banana", 0.25, 60)
+# Make this a dictionary
 
-CART.add_product(bread, 1)
-CART.add_product(bread, 1)
-CART.add_product(eggs, 1)
-CART.add_product(cheese, 2)
+inventory = {
+    "bread": Product("bread", 2.99, 20),
+    "cheese": Product("cheese", 5.25, 10),
+    "eggs": Product("eggs", 1.99, 30),
+    "milk": Product("milk", 1.29, 20),
+    "banana": Product("banana", 0.25, 60),
+}
+
+# bread = Product("bread", 2.99, 20)
+# cheese = Product("cheese", 5.25, 10)
+# eggs = Product("eggs", 1.99, 30)
+# milk = Product("milk", 1.29, 20)
+# banana = Product("banana", 0.25, 60)
+
+print(inventory.values())
+
+CART.add_product("bread", 1)
+# CART.add_product(bread, 1)
+# CART.add_product(eggs, 1)
+# CART.add_product(cheese, 2)
 CART.view_cart()
-CART.remove_product(bread, 1)
-CART.view_cart()
+# CART.get_total()
+# print(bread.price)

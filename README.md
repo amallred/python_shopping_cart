@@ -40,3 +40,6 @@ Once you've tried building it, take a moment to reflect:
 - What does this remind you of from real life?
 - Which parts of your code could be reused in another program?
 - What are some next steps you could take to build this out further?
+
+#### AI Disclaimer
+I did use Chat GPT to help in figuring out how to implement the `__str__` functionality and checking the inventory dictionary after much searching online.
